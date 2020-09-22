@@ -1,7 +1,6 @@
 var http = require("http");
 const request = require("request");
 var parseString = require("xml2js").parseString;
-
 http
   .createServer(function (req, res) {
     console.log("요청이 들어왔습니다.");
