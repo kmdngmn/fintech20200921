@@ -9,7 +9,6 @@ fs.readFile("./example/test.txt", "utf8", function (err, result) {
   } else {
     console.error("second func");
     console.log(result);
+    console.log("third func");
   }
 });
-
-console.log("third func");

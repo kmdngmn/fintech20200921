@@ -19,3 +19,5 @@ function cFunc() {
 aFunc();
 bFunc();
 cFunc();
+
+// promise , async await callback hell 검색 공부
