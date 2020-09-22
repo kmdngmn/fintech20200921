@@ -14,3 +14,9 @@ var a = "Volvo" + 16;
 console.log(a);
 var b = 16 + 4 + "Volvo";
 console.log(b);
+
+let testLength = 12;
+console.log(testLength);
+
+const testConst = 12;
+console.log(testConst);
