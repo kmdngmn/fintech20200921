@@ -33,3 +33,16 @@ var car3 = {
 
 var cars = [car, car2, car3];
 //#work 3 자동차 배열을 순회하여 이름이 smart 인 자동차를 찾으면 "find" 라고 출력하고 마력(ph) 출력하기
+for (var i = 0; i < cars.length; i++) {
+  if (cars[i].name == "smart") {
+    console.log("find");
+    console.log("자동차의 마력은 :" + cars[i].ph);
+  }
+}
+//es6
+cars.map((car) => {
+  if (car.name == "smart") {
+    console.log("find");
+    console.log("자동차의 마력은 :" + car.ph);
+  }
+});
