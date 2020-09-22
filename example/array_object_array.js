@@ -21,6 +21,6 @@ var car2 = {
 };
 
 var cars = [car, car2];
-console.log(cars);
 
 //#work2 두번째 요소에 이름을 출력하세요
+console.log(cars[1].name);
