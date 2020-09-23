@@ -78,7 +78,9 @@ app.post("/signup", function (req, res) {
     ],
     function (error, results, fields) {
       if (error) throw error;
-      console.log(results);
+      else {
+        res.json(1);
+      }
     }
   );
 });
