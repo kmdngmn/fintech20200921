@@ -8,11 +8,13 @@
       $("#sendButton").click(function(){
        var inputText = $("#inputText").val();
        $.ajax({
-            url:'/',
+            url:'/getDataTest',
             type : 'POST',
             data : {
+                userText : inputText
             },
             success:function(data){
+                alert(data);
             }
         })
       })
