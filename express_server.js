@@ -15,19 +15,8 @@ app.get("/", function (req, res) {
   res.send("Hello World");
 });
 
-app.get("/designTest", function (req, res) {
-  res.render("designTest");
-});
-
-app.get("/ejsTest", function (req, res) {
-  res.render("test");
-});
-
-app.post("/getDataTest", function (req, res) {
-  var userText = req.body.userText;
-  console.log(req.body);
-  console.log(userText, req.body.sendTime);
-  res.json("입력값은 : " + userText);
+app.get("/signup", function (req, res) {
+  res.render("signup");
 });
 
 app.listen(3000);
