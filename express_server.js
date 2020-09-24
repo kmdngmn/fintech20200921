@@ -113,7 +113,7 @@ app.post("/login", function (req, res) {
             },
             tokenKey,
             {
-              expiresIn: "10d",
+              expiresIn: "1d",
               issuer: "fintech.admin",
               subject: "user.login.info",
             },
