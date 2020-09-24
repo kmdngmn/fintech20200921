@@ -142,7 +142,26 @@ app.post("/login", function (req, res) {
 
 app.post("/list", auth, function (req, res) {
   //https://testapi.openbanking.or.kr/v2.0/user/me url 에 Request 요청하기
-  request(option, function (err, response, body) {});
+  var option = {
+    method: "GET",
+    url: "https://testapi.openbanking.or.kr/v2.0/user/me",
+    headers: {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiIxMTAwMDM0NzM2Iiwic2NvcGUiOlsiaW5xdWlyeSIsImxvZ2luIiwidHJhbnNmZXIiXSwiaXNzIjoiaHR0cHM6Ly93d3cub3BlbmJhbmtpbmcub3Iua3IiLCJleHAiOjE2MDg2MjE3NDUsImp0aSI6Ijg0NjA5OTEyLTQ1MzAtNGFkNy1hNDg1LWMxYzc1ZmZlNzNkMiJ9.jFZIKFHD4z0TOVaMk-h4VjJEALMoESqNULnmwAyz1jo",
+    },
+    //accesstoken 입력
+    //form 형태는 form / 쿼리스트링 형태는 qs / json 형태는 json ***
+    qs: {
+      user_seq_no: "1100034736",
+      //#자기 키로 시크릿 변경
+    },
+  };
+
+  request(option, function (err, response, body) {
+    var resResult = JSON.parse(body);
+    //json 문서를 파싱하여 javascript 오브젝트로 변환
+    res.json(resResult);
+  });
 });
 
 app.listen(3000);
