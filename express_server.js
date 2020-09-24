@@ -187,6 +187,9 @@ app.post("/list", auth, function (req, res) {
 
 app.post("/balance", function (err, res) {
   var userId = req.decoded.userId;
+  var countnum = Math.floor(Math.random() * 1000000000) + 1;
+  var transId = "T991599190U" + countnum; //이용기과번호 본인것 입력
+
   //사용자 정보를 바탕으로 request 요청을 만들기 url https://testapi.openbanking.or.kr/v2.0/account/balance/fin_num
 });
 
