@@ -5,6 +5,7 @@ const request = require("request");
 var jwt = require("jsonwebtoken");
 var tokenKey = "k!2f#$%%^1223^jlfejlkjfdaskejlkjflkj";
 var auth = require("./lib/auth");
+
 //MYSQL 커넥터 추가
 var mysql = require("mysql");
 var connection = mysql.createConnection({
@@ -34,6 +35,10 @@ app.get("/signup", function (req, res) {
 
 app.get("/login", function (req, res) {
   res.render("login");
+});
+
+app.get("/authText", auth, function (req, res) {
+  res.json("당신은 콘텐츠 접근에 성공했습니다.");
 });
 
 app.get("/authResult", function (req, res) {
