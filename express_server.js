@@ -321,11 +321,52 @@ app.post("/withdraw", auth, function (req, res) {
           recv_client_account_num: "7832932596",
         },
       };
+      var countnum2 = Math.floor(Math.random() * 1000000000) + 1;
+      var transId2 = "T991599190U" + countnum2; //이용기과번호 본인것 입력
       request(option, function (error, response, body) {
-        console.log(body);
-        //------********-------
-        //입금 이체 기능 만들기
-        //------********-------
+        if ((body.rsp_code = "A0000")) {
+          console.log(body);
+          var option = {
+            method: "POST",
+            url:
+              "https://testapi.openbanking.or.kr/v2.0/transfer/deposit/fin_num",
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJUOTkxNTk5MTkwIiwic2NvcGUiOlsib29iIl0sImlzcyI6Imh0dHBzOi8vd3d3Lm9wZW5iYW5raW5nLm9yLmtyIiwiZXhwIjoxNjA4Nzg5NTg5LCJqdGkiOiIyOGEzNWRhMC1kNDc5LTQwNWMtYTU2ZS1mYmExYzE1MGY3NTUifQ.5gBLUKX4wbCtlk7GNDCpXifmztTkWt-C1NIvmHlXelQ",
+              //이용기관 토큰으로 변경할것
+              "Content-Type": "application/json",
+            },
+            //form 형태는 form / 쿼리스트링 형태는 qs / json 형태는 json ***
+            json: {
+              cntr_account_type: "N",
+              cntr_account_num: "4262679045",
+              wd_pass_phrase: "NONE",
+              wd_print_content: "환불금액",
+              name_check_option: "on",
+              tran_dtime: "20200925150000",
+              req_cnt: "1",
+              req_list: [
+                {
+                  tran_no: "1",
+                  bank_tran_id: transId2,
+                  fintech_use_num: to_fin_use_num,
+                  print_content: "쇼핑몰환불",
+                  tran_amt: amount,
+                  req_client_name: "홍길동",
+                  req_client_fintech_use_num: fin_use_num,
+                  req_client_num: "110435475398",
+                  transfer_purpose: "ST",
+                },
+              ],
+            },
+          };
+          request(option, function (error, response, body) {
+            console.log(body);
+            res.json(1);
+          });
+        } else {
+          res.json(0);
+        }
       });
     }
   });
